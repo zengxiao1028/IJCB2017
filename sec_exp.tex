@@ -1,0 +1,247 @@
+%!TEX root = main.tex
+
+\subsection{Dataset}
+
+In this project, we  use NIST Special Database 4 \cite{nist-db-4} and NIST Special Database 14 \cite{nist-db-14} for our experiments. 
+%
+The NIST SD4 contains $2000$ 8-bit gray scale fingerprint image pairs, totally 4000 images.
+%
+The size of each image is $512\times512$ and each image is classified using one of the five following classes: Arch, Left and Right Loops, Tented Arch, Whorl.
+%
+Each of the five classes has 400 pairs(800 images). Each of the fingerprint pairs are two completely different rollings of the same fingerprint.
+
+%
+The NIST SD14 contains $27000$ 8-bit gray scale fingerprint image pairs. There are 2700 subjects in this dataset and each subject has 10 fingerprint samples pairs. The size of each image is  $768\times832$. To fit in our network, we centrally crop $768\times768$ from the samples and resize them into $512\times512$. 
+%
+The distribution of fingerprint classes is as shown in Table.\ref{tab.sd14_dist}. We can see that unlike NIST SD4, Arch and Tented Arch samples are only a small portion of the NIST SD14.
+
+
+\begin{table}[!ht]
+	\centering
+	\caption{Class Distribution of NIST SD14.}
+\label{tab.sd14_dist}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Arch} & \textbf{Left Loop} & \textbf{Right Loop} & \textbf{\begin{tabular}[c]{@{}c@{}}Tented \\ Arch\end{tabular}} & \textbf{Whorl} \\ \hline
+		3.6\% & 31.9\% & 30.5\% & 3.2\% & 30.8\% \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{Experimental Setup}
+We use a i7-5930K desktop with 32GB memory and a Nvidia GTX TITAN X GPU for experiments.
+%
+Typically, we use Tensorflow 1.0.1 as the deep learning library and Adaptive Moment Estimation(Adam\cite{kingma2014adam}) as the optimization algorithm. The learning rate is 0.0001. We also use $\ell_2$ regularization with 0.0001 weight decay rate. The batch size is 32. 
+%
+We evaluate our approach on NIST SD4 and NIST SD14 respectively. Each experiment is trained for $20k$ steps.
+
+
+%
+For NIST SD14 experiments, we use the samples of $80\%$ subjects for training, totally 2160 subjects with $43200$ images. Among these $432000$ images, $36$ of them have labels that do not belong to the 5 classes. These $36$ images are discarded. 
+The remained data of $20\%$ subjects are used for testing, totally $10800$ images. $9$ of these images are discarded due to the same reason above.
+%
+
+For NIST SD4 experiments,  we adopt two evaluation protocols. 
+%
+The first protocol is cross-sample for fair comparison with other works, where we use all the first samples in each fingerprint pair as training set and all the second samples as testing set.
+%
+The second protocol is cross-finger, where we use 50\% fingers for training and 50\% for testing to ensure the same finger does not existing in training and testing set at the same time. To improve the performance for NIST SD4, We use NIST SD14 data to pre-train the model.
+ 
+
+In addition to 5-class fingerprint classification, we also evaluate our SVM performance on 4-class fingerprint classification because 4 class classification are also used in other studies. 
+%
+To achieve 4-class classification, we merge Tented Arch class into Arch class when training SVM.
+
+\begin{figure*}[!ht]
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{fig/figs/confusion_matrix_svm_sd14.pdf}
+		\caption{SVM for NIST SD14 }
+		\label{fig.cnf_matrix_5class.svm_sd14}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{fig/figs/confusion_matrix_net_sd14.pdf}
+		\caption{ConvNet for NIST SD14 }
+		\label{fig.cnf_matrix_5class.net_sd14}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{fig/figs/confusion_matrix_svm_sd4_cross_subject.pdf}
+		\caption{SVM for NIST SD4 }
+		\label{fig.cnf_matrix_5class.svm_sd4}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{fig/figs/confusion_matrix_net_sd4_cross_subject.pdf}
+		\caption{ConvNet for NIST SD4 }
+		\label{fig.cnf_matrix_5class.net_sd4}
+	\end{subfigure}
+	\caption{Confusion Matrices for 5-class classification}\label{fig.cnf_matrix_5class}
+\end{figure*}
+
+\begin{figure}[!ht]
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{fig/figs/confusion_matrix_svm_sd14_4class.pdf}
+		\caption{SVM for NIST SD14 }
+		\label{fig.cnf_matrix_4class.svm_sd14}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.25\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{fig/figs/confusion_matrix_svm_sd4_4class_cross_subject.pdf}
+		\caption{SVM for NIST SD4}
+		\label{fig.cnf_matrix_4class.svm_sd4}
+	\end{subfigure}%
+
+	\caption{Confusion Matrices for 4-class classification}\label{fig.cnf_matrix_4class}
+\end{figure}
+
+\subsection{NIST SD14 result}
+The result for NIST SD14 is shown in Table\ref{tab.SD14_result}.
+%
+In addition to report SVM performance, we also report the performance when ConvNet is used as classifier. 
+%
+As we can see, both ConvNet and SVM achieve the same accuracy ($0.9861$) for 5-class classification. 
+%
+However, ConvNet performs slightly better in terms of average precision, recall rate and F1 score.
+%
+For 4-class classification, the 4-class SVM achieves $0.9875$ accuracy.
+
+For 5-class classification, the confusion matrix is shown in Figure.\ref{fig.cnf_matrix_5class.svm_sd14} and Figure.\ref{fig.cnf_matrix_5class.net_sd14}.
+For 4-class classification, the confusion matrix is shown in Figure.\ref{fig.cnf_matrix_4class.svm_sd14}. 
+%
+As we can see, the number of Arch and Tented Arch samples are relatively small compared to other classes.
+%
+However, our proposed approach can still achieve high accuracy despite the unbalanced distribution of fingerprint types.
+%
+Though computation based on Figure.\ref{fig.cnf_matrix_5class.svm_sd14}, we can see that Tented Arch achieves the lowest precision (0.959) and recall rate(0.950) due to lack of training samples and label ambiguity. 
+%
+Based on Figure.\ref{fig.cnf_matrix_4class.svm_sd14}, both the precision and recall rate of Arch increases to $0.98$, indicating many mis-classified samples can be eliminated by combing Arch and Tented-Arch classes.
+
+
+\begin{table}[!ht]
+	
+	\centering
+	\caption{ Experiment results for NIST SD14. In column 4, 5 and 6, we also report the average precision, recall and F1 score for all predicted classes. }
+	\label{tab.SD14_result}
+	\scalebox{0.87}{
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\textbf{method} & \textbf{\begin{tabular}[c]{@{}c@{}}\# of \\ classes\end{tabular}} & \textbf{accuracy} & \textbf{\begin{tabular}[c]{@{}c@{}}average \\ precision\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}average\\  recall\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}average \\ F1 score\end{tabular}} \\ \hline
+		ConvNet & 5 & 0.9861 & 0.9843 & 0.9793 & 0.9817 \\ \hline
+		SVM & 5 & 0.9861 & 0.9822 & 0.9781 & 0.9801 \\ \hline
+		SVM & 4 & 0.9875 & 0.9869 & 0.9867 & 0.9868 \\ \hline
+	\end{tabular}
+}
+\end{table}
+
+\subsection{NIST SD4 Result}
+
+The result for NIST SD4 is shown in Table\ref{tab.SD4_result}.
+%
+We have three observations from Table\ref{tab.SD4_result}.
+%
+First, in both protocol, our proposed SVM performs better than ConvNet not only in accuracy but also in average precision, recall rate and F1 score. 
+%
+In cross-sample protocol, the accuracy of 5-class SVM is $0.9275$, which is $0.006$ higher than 5-class ConvNet. In cross-finger protocol, the accuracy of 5-class SVM is $0.912$, $0.014$ higher than 5-class ConvNet.
+%
+Second, there is a performance drop in cross-finger compared to cross-sample. For 5-class ConvNet, the accuracy drops $0.023$. For 5-class SVM, the accuracy drops $0.015$. For 4-class SVM, the accuracy drops $0.011$. 
+%
+SVM suffers the smaller performance drop than ConvNet if cross-finger protocol is used.
+%
+The performance drop is small, indicating the generalization ability of our proposed method.
+%
+Third, the accuracy is improved if Tented Arch and Arch are combined into one-class. The accuracy of 4-class SVM is $0.022$ higher than 5-class SVM in cross-sample and $0.027$ higher in cross-finger. This indicates many mis-classified samples can be eliminated by combing Arch and Tented-Arch classes, as in NIST SD 14.
+
+For 5-class classification using cross-finger protocol, the confusion matrices are shown in Figure.\ref{fig.cnf_matrix_5class.svm_sd4} and Figure.\ref{fig.cnf_matrix_5class.net_sd4}.
+%
+For 4-class classification using cross-finger protocol, the confusion matrices are shown in Figure.\ref{fig.cnf_matrix_4class.svm_sd4}.
+%
+We can see that both in Figure.\ref{fig.cnf_matrix_5class.svm_sd4} and Figure.\ref{fig.cnf_matrix_5class.net_sd4}, the Tented Arch class achieves the lowest precision ($91.8\%$) and lowest precision rate ($94.0\%$) among five classes. 
+%
+In later experiments, we can see that the mis-labeled samples are ambiguous can be eliminated by introducing the second labels.
+
+In NIST SD4, around $17\%$ of the samples are ambiguous and are labeled with two classes. Many existing works report their best performance based on these additional labels.
+%
+We also evaluate our approach using the additional $17\%$ two labels to compare with other methods and the results are reported in Table.\ref{tab.SD4_result_two_labels}. 
+%
+The training procedure remains the same where we only use one label for training. 
+%
+When testing, for those $17\%$ samples, as long as the prediction for the test sample matches one of the two labels, the test sample is considered 
+As we can see, a significant performance gain is obtained after the additional $17\%$ are used.
+%
+For cross-sample,our proposed ConvNet achieves 0.9535 accuracy, which is 0.032 higher than before.
+%
+The proposed 5-class and 4-class SVMs achieve 1.0 accuracy and is the best among all the methods.
+%
+For cross-finger, our proposed ConvNet achieves 0.945 accuracy, which is 0.046 higher than before.
+%
+The proposed 5-class and 4-class SVMs still achieve 1.0 accuracy in this protocol.
+
+
+\begin{table}[!ht]
+	\centering
+	\caption{ Experiment results for NIST SD4. In column 4, 5 and 6, we also report the average precision, recall and F1 score for all predicted classes. }
+	\label{tab.SD4_result}
+		\scalebox{0.87}{
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		 \textbf{method} & \textbf{\begin{tabular}[c]{@{}c@{}}\# of \\ classes\end{tabular}} & \textbf{accuracy} & \textbf{\begin{tabular}[c]{@{}c@{}}average \\ precision\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}average\\  recall\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}average \\ F1 score\end{tabular}} \\ \hline
+		 \multicolumn{6}{|c|}{\textbf{Cross-Sample}}      \\ \hline
+		ConvNet & 5 & 0.9215 & 0.9225 & 0.9215 & 0.9217 \\ \hline
+		SVM & 5 & 0.9275 & 0.9325 & 0.9275 & 0.9288 \\ \hline
+		SVM & 4 & 0.9495 & 0.9576 & 0.9459 & 0.9514 \\ 
+\hhline{|======|}
+\multicolumn{6}{|c|}{\textbf{Cross-Finger}}      \\ \hline
+		ConvNet & 5 & 0.8985 & 0.8991 & 0.8986 & 0.8987 \\ \hline
+SVM & 5 & 0.9120 & 0.9132 & 0.9117 & 0.9123 \\ \hline
+SVM & 4 & 0.9390 & 0.9452 & 0.9357 & 0.9403 \\ \hline
+		
+\end{tabular}}
+\end{table}
+
+
+\begin{table}[!ht]
+	\centering
+	\caption{Experiment results for NIST SD4 with two labels.}
+	\label{tab.SD4_result_two_labels}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{method} & \textbf{\# of classes} & \textbf{accuracy} & \textbf{protocol} \\ \hline
+		ConvNet & 5 & 0.9535 & cross-sample \\ \hline
+		SVM & 5 & 1.0 & cross-sample \\ \hline
+		SVM & 4 & 1.0 & cross-sample \\ \hline
+		\cite{cao2013fingerprint} & 5 & 0.959 & cross-sample \\ \hline
+		\cite{cao2013fingerprint}& 4 & 0.972 & cross-sample \\ \hline
+		\cite{wang2014fingerprint} & 4 & 0.980 & not-spepcified \\ \hline
+		ConvNet & 5 & 0.945 & cross-finger \\ \hline
+		SVM & 5 & 1.0 & cross-finger \\ \hline
+		SVM & 4 & 1.0 & cross-finger \\ \hline
+	\end{tabular}
+\end{table}
+
+
+\subsection{Discussion}
+%
+From experiment results we can see that our proposed approach can successfully perform fingerprint type classification on raw fingerprint images without the need of extracting hand-crafted features.
+%
+Our proposed approach achieves the highest classification accuracy on both NIST SD14 and NIST 4 dataset to the best of our knowledge. 
+%
+Experiment results show that using Deep ConvNet as a feature extractor and train a SVM on top of the ConvNet can bring further performance gain compared to a standalone Deep ConvNet.
+%
+Tented Arch and Arch fingerprints contributes the most error rate among the five classes.
+%
+Many mis-classified labels can be corrected by combining Tented Arch and Arch classes into one class or using additional labels.
+%
+We also collect some mis-classification cases on NIST SD14  and show them in Figure\ref{fig.fails}.
+%
+As we can see, in 
+
+\begin{figure*}[!ht]
+	\begin{center}
+		\includegraphics[scale=0.53,clip=true,trim = 5mm 60mm 5mm 45mm]{fig/figs/fail.pdf}
+	\end{center}
+	\caption{Mis-classification examples on NIST SD14. The title of each example is \textit{Prediction}(\textit{Ground Truth})} 
+	\label{fig.fails}
+\end{figure*}
+
