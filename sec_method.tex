@@ -92,12 +92,12 @@ To augment training dataset, we applied below augmentation techniques:
 	\item Random Contrast. We randomly change the contrast of images. The contrast factor is sampled from $uniform (0.4, 1.6)$.
 
 \end{enumerate}
-Some of the augmented fingerprints are shown in Figure.\ref{fig.augmented_examples}.
+Some of the augmented images are shown in Figure.\ref{fig.augmented_examples}. Note that the augmented images are only used during training deep ConvNet. In testing stage, we use original images as input.
 \begin{figure}[!ht]
 	\begin{center}
 		\includegraphics[scale=0.33,clip=true,trim = 55mm 35mm 30mm 20mm]{fig/figs/augmented.pdf}
 	\end{center}
-	\caption{Examples of augmented NIST SD14 fingerprints.} 
+	\caption{Examples of augmented NIST SD14 fingerprint images. These generated images are used as training data. } 
 	\label{fig.augmented_examples}
 \end{figure}
 
