@@ -22,6 +22,10 @@ Tented arch is a pattern type that possesses either an angle, an upthrust, or tw
 Loop is a pattern type in which one or more friction ridges enter upon one side, recurve, touch or pass an imaginary line between delta and core and flow out, or tend to flow out, on the same side the friction ridges entered. Loops can be left slant loops (or left loops), in which the pattern flows to the left in the impression; or right slant loops (right loops), in which the pattern flows to the right in the impression.
 %
 Whorl is a fingerprint pattern type that consists of one or more friction ridges that make, or tends to make, a complete circuit, with two deltas, between which, when an imaginary line is drawn, at least one recurving friction ridge within the inner pattern area is cut or touched. 
+{\color{red}
+Fingerprints collected in real world do not rigidly follow these definitions.
+In fact, many fingerprints can be classified into multiple types at the same time due to ambiguity.
+}
 
 As mentioned above, to manage the computation load, large scale fingerprint identification algorithms employ multi-stage matching whose first step is often filtering based on fingerprint pattern type.\footnote{Some of more recent fingerprint classification algorithms use continuous classifications instead of discrete classes. These continuous spectrums are beyond the scope of this paper because of their non-intuitive and proprietary nature as they are developed for a dedicated recognition algorithm.} As such the accuracy of the fingerprint classification algorithm largely influences the identification accuracy. An error in finger pattern classification will propagate throughout the system, and ultimately result in an recognition error. 
 Challenges in fingerprint pattern classification include: 
@@ -32,7 +36,7 @@ Challenges in fingerprint pattern classification include:
 %
 3) ambiguities in some pattern class labels, some fingerprints can be classified into multiple classes, or different classes by different fingerprint experts.
 
-In this paper we propose an automated fingerprint pattern classification that unlike previous finger pattern classifiers, does not require feature extraction.  Specifically, we trained a deep convolutional neural network to take a fingerprint image as an input and classify it into one of the five pattern class types of a) Arch; b) Tented Arch; c) Left Loop; d) Right Loop; or e) Whorl. 
+In this paper we propose an automated fingerprint pattern classification that unlike previous finger pattern classifiers, does not require feature extraction.  Specifically, we trained a deep ConvNet  to take a fingerprint image as an input and classify it into one of the five pattern class types of a) Arch; b) Tented Arch; c) Left Loop; d) Right Loop; or e) Whorl. 
 
 The rest of the paper is organized as follows.  Section \ref{sec_motivtn} overviews previous work. 
 Section \ref{sec_method} details our technical approach. 

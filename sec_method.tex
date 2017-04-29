@@ -3,14 +3,14 @@
 Figure\ref{fig.method} illustrates our technical approach.   
 %
 The top row shows the steps of the training process.  First training images are preprocessed using data augmentation techniques to increase data diversity. 
-The augmented data are fed into deep convolutional neural network(ConvNet) for training. The trained deep ConvNet then serves as a feature extractor for a support vector machine (SVM) which uses the deep features from the trained deep ConvNet as input, and is trained to classify the pattern type.
+The augmented data are fed into deep ConvNet for training. The trained deep ConvNet then serves as a feature extractor for a SVM which uses the deep features from the trained deep ConvNet as input, and is trained to classify the pattern type.
 %
-During the testing, shown in the bottom row of Figure\ref{fig.method}, testing images are fed into the trained deep ConvNet for deep features extraction. These intermediate deep features are used as input features to the trained SVM. The output of the SVM is final pattern class predictions.
+During the testing, shown in the bottom row of Figure\ref{fig.method}, testing images are fed into the trained deep ConvNet for deep features extraction. These intermediate deep features are used as input features to the trained SVM. The output of the SVM is final pattern class prediction.
 
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[scale=0.38,clip=true,trim = 50mm 55mm 28mm 50mm]{fig/figs/method_overview.pdf}
+		\includegraphics[scale=0.38,clip=true,trim = 50mm 55mm 50mm 50mm]{fig/figs/method_overview.pdf}
 	\end{center}
 	\caption{Overview of proposed approach.} 
 	\label{fig.method}
@@ -19,7 +19,7 @@ During the testing, shown in the bottom row of Figure\ref{fig.method}, testing i
 %-------------------------
 \subsection{Deep ConvNet Architecture}
 \label{sec_cnn}
-Our proposed network architecture (Figure \ref{fig.cnn_arch})  is based on deep residual network proposed by Kaiming He \textbf{et al.}\cite{he2016deep}. Deep residual  network has been proven to outperform other deep plain networks because it addresses the degradation problem by reformulating the layers as learning residual functions instead of learning unreferenced functions. 
+Our proposed network architecture (Figure \ref{fig.cnn_arch})  is based on deep residual network proposed by Kaiming He \textit{et al.}\cite{he2016deep}. Deep residual  network has been proven to outperform other deep plain networks because it addresses the degradation problem by reformulating the layers as learning residual functions instead of learning unreferenced functions. 
 %
 Table\ref{tab.cnn_params} summarizes the details of our network. The input size of our deep ConvNet is $512\times512$ and the number of channels is $1$.
 The first two layers of our network are convolutional layers which has 96 $7\times7$ filters and the stride is 2. The third layer has 64 $7\times7$ filters and the stride is 2. 
@@ -45,7 +45,8 @@ We also ruled out cropping or segmenting the fingerprint portion of an image, th
 %
 After careful visual inspection of fingerprint images of different sizes, we decided to use $512\times512$ as input size for the following reasons. 
 %
-First, sufficient fingerprint detail is preserved at this size. Second, it is a reasonable size for rolled fingerprints. Finally, it is the original image size of one of the datasets we used, which is NIST SD4. 
+First, sufficient fingerprint detail is preserved at this size. Second, it is a reasonable size for rolled fingerprints. Finally, it is the original image size of one of the datasets we used, which is NIST SD4.
+%
 To remedy the huge computational cost and high memory usage during the training, we added \textit{conv1} and \textit{conv2} with stride 2 to down-sample the input images. As shown in Table.\ref{tab.cnn_params}, after \textit{conv2}, the feature map size is $128\times128, 96$. So, the spatial size is reduced (from $512 \times 512$ to $128 \times 128$) and spatial information is stored in the increased channels (from $1$ to $96$).
 
 %
@@ -60,7 +61,7 @@ To remedy the huge computational cost and high memory usage during the training,
 %
 \begin{figure*}[!ht]
 	\begin{center}
-		\includegraphics[scale=0.65,clip=true,trim = 20mm 65mm 30mm 65mm]{fig/figs/cnn_arch.pdf}
+		\includegraphics[scale=0.65,clip=true,trim = 20mm 65mm 40mm 65mm]{fig/figs/cnn_arch.pdf}
 	\end{center}
 	\caption{Architecture of proposed CNN.} 
 	\label{fig.cnn_arch}
@@ -98,6 +99,7 @@ To augment training dataset, we applied below augmentation techniques:
 The deep ConvNet only serves as a feature extractor and we use a non-linear SVM as classifier. The kernel is radial basis function(RBF). The gamma of RBF kernel  is set to be $\frac{1}{n}$ where $n$ is the feature dimensionality. The penalty for error term $C$ is set to be $1.0$. 
 %
 We use the output of  conv7\_x as features. Therefore, each sample is represented by a feature vector $x \in \mathbb{R}^d$ where $d=4*4*2048=32768$. The output of SVM is the predicted label $\hat{y} $ indicating one of the fingerprint pattern class types.
+%
 
 
 

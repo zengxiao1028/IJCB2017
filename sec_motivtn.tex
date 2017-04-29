@@ -1,17 +1,8 @@
+%
+%An overview of related works follows. 
+({\color{red} (I switched the first and scond paragrph)}
 
-
-Previous work mostly consists of singularity points (core and delta) detection or extracting features such as ridge and orientation flow, or using human markups (or handcrafted features) as the basis for pattern type classification. 
-%
-Therefore, the accuracy of these methods depends on the goodness (or utility) of the selected features and the precision of the feature extraction portion of the pattern classification algorithms. Both are sensitive to the noise and the variations of the gray-scale level of the input image.  
-%
-Using handcrafted features can improve performance.  However, in addition to being burdensome and time consuming, accuracy of handcrafted features cannot be guaranteed due to the existence of noise and poor image quality. 
-%
-Their repeatability and reproducibility cannot be guaranteed either, due to inter- and intra-examiners variations \cite{fbiBlackbox}.  
-%
-Our approach differs from these works in the sense that we aim to use raw images instead of features as input. Convolutional neural network has the capability of learning features and it can be directly applied on raw images. Convolutional neural network exhibits powerful classification capability in many areas\cite{lecun2015deep}\cite{szegedy2016rethinking}.
-
-%
-An overview of related works follows. 
+Many existing works are focused on fingerprint type classification.
 %
 Karu and Jain \cite{karuJain1996} presented a rule-based classifier based on extracting singular points. 
 %
@@ -27,4 +18,18 @@ Kai Cao \textit{et al.}\cite{cao2013fingerprint} proposed to extract fingerprint
 %
 Ruxin Wang \textit{et al.} \cite{wang2014fingerprint} also used orientation filed as features. %By adopting a stacked autoencoder, they achieved 93.1\% in four-class classification.
 %%
- 
+
+
+Previous works mostly consist of singularity points (core and delta) detection or extracting features such as ridge and orientation flow, or using human markups (or handcrafted features) as the basis for pattern type classification. 
+%
+Therefore, the accuracy of these methods depends on the goodness (or utility) of the selected features and the precision of the feature extraction portion of the pattern classification algorithms. Both are sensitive to the noise and the variations of the gray-scale level of the input image.  
+%
+Using handcrafted features can improve performance.  However, in addition to being burdensome and time consuming, accuracy of handcrafted features cannot be guaranteed due to the existence of noise and poor image quality. 
+%
+Their repeatability and reproducibility cannot be guaranteed either, due to inter- and intra-examiners variations \cite{fbiBlackbox}.  
+%
+Our approach differs from these works in the sense that we aim to use raw images instead of features as input. Convolutional neural network(CNN) has the capability of learning features and it can be directly applied on raw images. CNN exhibits powerful classification capability in many areas\cite{lecun2015deep}\cite{szegedy2016rethinking}.
+%
+Different from common CNN-based approach, we employs a SVM on top of deep ConvNet as classifier for prediction.
+
+
