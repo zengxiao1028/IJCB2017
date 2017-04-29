@@ -80,9 +80,8 @@ To remedy the huge computational cost and high memory usage during the training,
 %-------------------------
 \subsection{Data Augmentation}
 \label{sec-dataAug}
-Fingerprint images exhibit a wide range of location, rotation, brightness and contrast. To enhance the generalization ability of our ConvNet, we adopt data augmentation techniques to increase the data diversity.
-	
-To augment training dataset, we applied below augmentation techniques:
+Fingerprint images exhibit a wide range of location, rotation, brightness and contrast. To enhance the generalization ability of our ConvNet, we adopt data augmentation techniques to increase the data diversity. 
+The augmentation techniques we applied during training are described as follows:
 
 \begin{enumerate}
 
@@ -92,7 +91,9 @@ To augment training dataset, we applied below augmentation techniques:
 	\item Random Contrast. We randomly change the contrast of images. The contrast factor is sampled from $uniform (0.4, 1.6)$.
 
 \end{enumerate}
-Some of the augmented images are shown in Figure.\ref{fig.augmented_examples}. Note that the augmented images are only used during training deep ConvNet. In testing stage, we use original images as input.
+Some of the augmented images are shown in Figure.\ref{fig.augmented_examples}. Note that the augmented images were only used during training deep ConvNet.
+%
+In testing stage, we used original images as input.
 \begin{figure}[!ht]
 	\begin{center}
 		\includegraphics[scale=0.33,clip=true,trim = 55mm 35mm 30mm 20mm]{fig/figs/augmented.pdf}
