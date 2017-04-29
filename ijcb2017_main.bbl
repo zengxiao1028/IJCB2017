@@ -1,20 +1,20 @@
 \begin{thebibliography}{10}\itemsep=-1pt
 
-\bibitem{NFIQ}
-Nist finger image quality 2.0.
-\newblock
-  \url{https://www.nist.gov/services-resources/software/development-nfiq-20}.
+\bibitem{nijSourceBook}
+{\em The Fingerprint Source Book}.
+\newblock National Institute of Justice, US Department of Justice.
 
 \bibitem{aaddhaar}
 Unique identification authority of india.
 \newblock \url{https://portal.uidai.gov.in/uidwebportal/dashboard.do}.
 
 \bibitem{nist-db-14}
-Nist special database 14, 2010.
+National institute of standards and technology (nist) special database 14,
+  2010.
 \newblock \url{https://www.nist.gov/srd/nist-special-database-14}.
 
 \bibitem{nist-db-4}
-Nist special database 4, 2010.
+National institute of standards and technology (nist) special database 4, 2010.
 \newblock \url{https://www.nist.gov/srd/nist-special-database-4}.
 
 \bibitem{Bernard2001}
@@ -34,13 +34,8 @@ R.~Cappelli, A.~Lumini, D.~Maio, and D.~Maltoni.
 \newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
   21(5):402--421, May 1999.
 
-\bibitem{caruana1998multitask}
-R.~Caruana.
-\newblock Multitask learning.
-\newblock In {\em Learning to learn}, pages 95--133. Springer, 1998.
-
 \bibitem{FitzGreen1996}
-A.~Fitz and R.~Green".
+A.~Fitz and R.~Green.
 \newblock Fingerprint classification using a hexagonal fast fourier transform.
 
 \bibitem{galton1892}
@@ -75,12 +70,6 @@ D.~Kingma and J.~Ba.
 \newblock Adam: A method for stochastic optimization.
 \newblock {\em arXiv preprint arXiv:1412.6980}, 2014.
 
-\bibitem{krizhevsky2012imagenet}
-A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
-\newblock Imagenet classification with deep convolutional neural networks.
-\newblock In {\em Advances in neural information processing systems}, pages
-  1097--1105, 2012.
-
 \bibitem{lecun2015deep}
 Y.~LeCun, Y.~Bengio, and G.~Hinton.
 \newblock Deep learning.
@@ -91,11 +80,6 @@ V.~Nair and G.~E. Hinton.
 \newblock Rectified linear units improve restricted boltzmann machines.
 \newblock In {\em Proceedings of the 27th international conference on machine
   learning (ICML-10)}, pages 807--814, 2010.
-
-\bibitem{nijSourceBook}
-N.~I. of~Justice.
-\newblock {\em The Fingerprint Source Book}.
-\newblock US Department of Justice, 1892.
 
 \bibitem{szegedy2016rethinking}
 C.~Szegedy, V.~Vanhoucke, S.~Ioffe, J.~Shlens, and Z.~Wojna.
@@ -113,12 +97,5 @@ B.~T. Ulery, R.~A. Hicklin, J.~Buscaglia, and M.~A. Roberts.
 R.~Wang, C.~Han, Y.~Wu, and T.~Guo.
 \newblock Fingerprint classification based on depth neural network.
 \newblock {\em arXiv preprint arXiv:1409.5188}, 2014.
-
-\bibitem{zhang2016learning}
-Z.~Zhang, P.~Luo, C.~C. Loy, and X.~Tang.
-\newblock Learning deep representation for face alignment with auxiliary
-  attributes.
-\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
-  38(5):918--930, 2016.
 
 \end{thebibliography}
