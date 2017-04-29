@@ -1,0 +1,124 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{NFIQ}
+Nist finger image quality 2.0.
+\newblock
+  \url{https://www.nist.gov/services-resources/software/development-nfiq-20}.
+
+\bibitem{aaddhaar}
+Unique identification authority of india.
+\newblock \url{https://portal.uidai.gov.in/uidwebportal/dashboard.do}.
+
+\bibitem{nist-db-14}
+Nist special database 14, 2010.
+\newblock \url{https://www.nist.gov/srd/nist-special-database-14}.
+
+\bibitem{nist-db-4}
+Nist special database 4, 2010.
+\newblock \url{https://www.nist.gov/srd/nist-special-database-4}.
+
+\bibitem{Bernard2001}
+S.~Bernard, N.~Boujemaa, D.~Vitale, and C.~Bricot.
+\newblock Fingerprint classification using kohonen topologic map.
+\newblock In {\em Proceedings 2001 International Conference on Image Processing
+  (Cat. No.01CH37205)}, volume~3, pages 230--233 vol.3, 2001.
+
+\bibitem{cao2013fingerprint}
+K.~Cao, L.~Pang, J.~Liang, and J.~Tian.
+\newblock Fingerprint classification by a hierarchical classifier.
+\newblock {\em Pattern Recognition}, 46(12):3186--3197, 2013.
+
+\bibitem{cappelli1999}
+R.~Cappelli, A.~Lumini, D.~Maio, and D.~Maltoni.
+\newblock Fingerprint classification by directional image partitioning.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  21(5):402--421, May 1999.
+
+\bibitem{caruana1998multitask}
+R.~Caruana.
+\newblock Multitask learning.
+\newblock In {\em Learning to learn}, pages 95--133. Springer, 1998.
+
+\bibitem{FitzGreen1996}
+A.~Fitz and R.~Green".
+\newblock Fingerprint classification using a hexagonal fast fourier transform.
+
+\bibitem{galton1892}
+F.~Galton.
+\newblock {\em Finger Prints}.
+\newblock Macmillan, London, 1892.
+
+\bibitem{he2016deep}
+K.~He, X.~Zhang, S.~Ren, and J.~Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 770--778, 2016.
+
+\bibitem{henry1905classification}
+E.~R. Henry.
+\newblock {\em Classification and uses of finger prints}.
+\newblock HM Stationery Office, 1905.
+
+\bibitem{JainSalil1999}
+A.~K. Jain, S.~Prabhakar, and L.~Hong.
+\newblock A multichannel approach to fingerprint classification.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  21(4):348--359, Apr 1999.
+
+\bibitem{karuJain1996}
+K.~Karu and A.~K. Jain.
+\newblock Fingerprint classification.
+\newblock {\em Pattern Recognition}, 29(3):389--404, 1996.
+
+\bibitem{kingma2014adam}
+D.~Kingma and J.~Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em arXiv preprint arXiv:1412.6980}, 2014.
+
+\bibitem{krizhevsky2012imagenet}
+A.~Krizhevsky, I.~Sutskever, and G.~E. Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1097--1105, 2012.
+
+\bibitem{lecun2015deep}
+Y.~LeCun, Y.~Bengio, and G.~Hinton.
+\newblock Deep learning.
+\newblock {\em Nature}, 521(7553):436--444, 2015.
+
+\bibitem{nair2010rectified}
+V.~Nair and G.~E. Hinton.
+\newblock Rectified linear units improve restricted boltzmann machines.
+\newblock In {\em Proceedings of the 27th international conference on machine
+  learning (ICML-10)}, pages 807--814, 2010.
+
+\bibitem{nijSourceBook}
+N.~I. of~Justice.
+\newblock {\em The Fingerprint Source Book}.
+\newblock US Department of Justice, 1892.
+
+\bibitem{szegedy2016rethinking}
+C.~Szegedy, V.~Vanhoucke, S.~Ioffe, J.~Shlens, and Z.~Wojna.
+\newblock Rethinking the inception architecture for computer vision.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 2818--2826, 2016.
+
+\bibitem{fbiBlackbox}
+B.~T. Ulery, R.~A. Hicklin, J.~Buscaglia, and M.~A. Roberts.
+\newblock Accuracy and reliability of forensic latent fingerprint decisions.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 108(19):7733--7738436, 2011.
+
+\bibitem{wang2014fingerprint}
+R.~Wang, C.~Han, Y.~Wu, and T.~Guo.
+\newblock Fingerprint classification based on depth neural network.
+\newblock {\em arXiv preprint arXiv:1409.5188}, 2014.
+
+\bibitem{zhang2016learning}
+Z.~Zhang, P.~Luo, C.~C. Loy, and X.~Tang.
+\newblock Learning deep representation for face alignment with auxiliary
+  attributes.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  38(5):918--930, 2016.
+
+\end{thebibliography}

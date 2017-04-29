@@ -1,24 +1,17 @@
 
-The challenge of classifying fingerprint includes: 
-%
-1) quality of fingerprints, particularly poor quality; 
-%
-2) small inter-class dissimilarity and small intra-class similarity; for example, tented arch and loop may look similar; 
-%
-3) ambiguities in some labels (pattern class; some fingerprints can be classified into multiple classes, or different classes by different fingerprint experts.
 
 Previous work mostly consists of singularity points (core and delta) detection or extracting features such as ridge and orientation flow, or using human markups (or handcrafted features) as the basis for pattern type classification. 
 %
-Therefore, the accuracy of these methods depends on the goodness (or utility) of the selected features and the precision of the feature extraction portion of the algorithms. Both are sensitive to the noise and the variations of the gray-scale level of the input image.  
+Therefore, the accuracy of these methods depends on the goodness (or utility) of the selected features and the precision of the feature extraction portion of the pattern classification algorithms. Both are sensitive to the noise and the variations of the gray-scale level of the input image.  
 %
 Using handcrafted features can improve performance.  However, in addition to being burdensome and time consuming, accuracy of handcrafted features cannot be guaranteed due to the existence of noise and poor image quality. 
 %
-Moreover, their repeatability and reproducibility cannot be guaranteed either, due to inter- and intra-examiners variations \cite{fbiBlackbox}.  
+Their repeatability and reproducibility cannot be guaranteed either, due to inter- and intra-examiners variations \cite{fbiBlackbox}.  
 %
-Our approach differs from these works in the sense that we aim to use raw images instead of features as input. Convolutional neural network (CNN) has the capability of learning features and it can be directly applied on raw images. CNN also exhibits powerful classification capability in many areas\cite{lecun2015deep}\cite{szegedy2016rethinking}.
+Our approach differs from these works in the sense that we aim to use raw images instead of features as input. Convolutional neural network has the capability of learning features and it can be directly applied on raw images. Convolutional neural network exhibits powerful classification capability in many areas\cite{lecun2015deep}\cite{szegedy2016rethinking}.
 
 %
-An overview of related work follows. 
+An overview of related works follows. 
 %
 Karu and Jain \cite{karuJain1996} presented a rule-based classifier based on extracting singular points. 
 %
@@ -32,6 +25,6 @@ Bernard \textit{et al.} \cite{Bernard2001} used the Kohonen topologic map for fi
 %
 Kai Cao \textit{et al.}\cite{cao2013fingerprint} proposed to extract fingerprint orientation feature and used a hierarchical classifier for classification.
 %
-Ruxin Wang \textit{et al.} \cite{wang2014fingerprint} also used orientation filed as features. By adopting a stacked autoencoder, they achieved 93.1\% in four-class classification.
+Ruxin Wang \textit{et al.} \cite{wang2014fingerprint} also used orientation filed as features. %By adopting a stacked autoencoder, they achieved 93.1\% in four-class classification.
 %%
  
