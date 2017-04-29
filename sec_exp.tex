@@ -10,7 +10,7 @@ The size of each image is $512\times512$ pixels and each image is classified usi
 %
 The database is evenly distributed over each of the five mentioned classifications with $400$ fingerprint pairs ($800$ images) from each class. 
 
-NIST SD14 contains $27000$ 8-bit gray scale fingerprint image pairs, a total of $54000$ images. There are 2700 subjects in this dataset and each subject has 10 fingerprint  pairs. The size of each image is  $768\times832$.  To fit in our network (see Section \ref{sec_cnn}), we centrally crop each image into a $768\times768$ pixels image and then resize it into $512\times512$ pixels.
+NIST SD14 contains $27000$ 8-bit gray scale fingerprint image pairs, a total of $54000$ images. There are 2700 subjects in this dataset and each subject has 10 fingerprint  pairs. The size of each image is  $768\times832$.  To fit in our network (see Section \ref{sec_cnn}), we centrally crop each image into a $768\times768$ pixels image and then resize it into $512\times512$ pixels using bilinear interpolation.
 %
 Each image is classified using the five finger pattern types mentioned above by professional fingerprint examiners.  Table \ref{tab.sd14_dist} shows the distribution of fingerprint pattern classes. The distribution of classes are supposed to approximate the natural horizontal distribution of the five pattern type classes.  We can see that unlike NIST SD4, arch and tented arch samples are only a small portion of NIST SD14.
 
