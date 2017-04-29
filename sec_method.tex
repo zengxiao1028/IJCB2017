@@ -2,10 +2,10 @@
 
 Figure\ref{fig.method} illustrates our technical approach.   
 %
-The top row shows the steps of the training process.  First training images are preprocessed using data augmentation techniques to increase data diversity. 
+The top row shows the steps of the training process.  First, training images are preprocessed using data augmentation techniques to increase data diversity. 
 The augmented data are fed into deep ConvNet for training. The trained deep ConvNet then serves as a feature extractor for a SVM which uses the deep features from the trained deep ConvNet as input, and is trained to classify the pattern type.
 %
-During the testing, shown in the bottom row of Figure\ref{fig.method}, testing images are fed into the trained deep ConvNet for deep features extraction. These intermediate deep features are used as input features to the trained SVM. The output of the SVM is final pattern class prediction.
+During the testing, shown in the bottom row of Figure\ref{fig.method}, testing images are fed into the trained deep ConvNet for deep features extraction. These intermediate deep features are used as input features to the trained SVM. The output of the SVM is our final pattern class prediction.
 
 
 \begin{figure}[!ht]
@@ -35,7 +35,7 @@ The number of parameters of proposed deep ConvNet is $24.26$ million.
 We use Relu\cite{nair2010rectified} as intermediate activation function.
 %
 
-The novelty of our network is that we use $512\times512$ as network input size. This preserves the detail of fingerprint to the extent possible. 
+The novelty of our network is that we use $512\times512$ as network input size. This preserves the detail of fingerprint information to the extent possible. 
 %
 However, the larger the size of input images, the larger the computational cost.  We empirically searched for the optimal input image size and we found that the performance drops as the size gets smaller, and it drops significantly for images smaller than $224\times224$ -- as shown in Figure\ref{fig.resize_examples}, down-sampling the images to $224\times224$, results in loss of information content of prints and reduces the clarity of ridge details and deltas and cores. 
 %
@@ -43,7 +43,7 @@ Therefore we decided against significant down sampling.
 %
 We also ruled out cropping or segmenting the fingerprint portion of an image, that is removing background and non-fingerprint portion of images to get smaller images, because of its requiring to employ a segmentation algorithm and reliance on the accuracy of the segmentation algorithm -- recall that one of our objective has been to avoid fingerprint processing and characterization.
 %
-After careful visual inspection of fingerprint images of different sizes, we decided to use $512\times512$ as input size for the following reasons. 
+After careful visual inspection of fingerprint images of different sizes, we decided to use $512\times512$ pixels as input size for the following reasons. 
 %
 First, sufficient fingerprint detail is preserved at this size. Second, it is a reasonable size for rolled fingerprints. Finally, it is the original image size of one of the datasets we used, which is NIST SD4.
 %
@@ -96,7 +96,7 @@ To augment training dataset, we applied below augmentation techniques:
 %-------------------------
 \subsection{SVM}
 \label{sec_svm}
-The deep ConvNet only serves as a feature extractor and we use a non-linear SVM as classifier. The kernel is radial basis function(RBF). The gamma of RBF kernel  is set to be $\frac{1}{n}$ where $n$ is the feature dimensionality. The penalty for error term $C$ is set to be $1.0$. 
+We examined two scenarios: the deep ConvNet is trained for feature extraction and classification and another scenario where the deep ConvNet only serves as a feature extractor and a non-linear SVM is trained as classifier. For the latter case, the kernel is radial basis function(RBF). The gamma of RBF kernel  is set to be $\frac{1}{n}$ where $n$ is the feature dimensionality. The penalty for error term $C$ is set to be $1.0$. 
 %
 We use the output of  conv7\_x as features. Therefore, each sample is represented by a feature vector $x \in \mathbb{R}^d$ where $d=4*4*2048=32768$. The output of SVM is the predicted label $\hat{y} $ indicating one of the fingerprint pattern class types.
 %
