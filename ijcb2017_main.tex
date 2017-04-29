@@ -55,13 +55,19 @@ First line of institution2 address\\
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-   The ABSTRACT is to be in fully-justified italicized text, at the top
-   of the left-hand column, below the author and affiliation
-   information. Use the word ``Abstract'' as the title, in 12-point
-   Times, boldface type, centered relative to the column, initially
-   capitalized. The abstract is to be in 10-point, single-spaced type.
-   Leave two blank lines after the Abstract, then begin the main text.
-   Look at previous BTAS/IJCB abstracts to get a feel for style and length.
+   Fingerprints are broadly categorized into five pattern class types.
+   Fingerprint pattern classification is useful for quick exclusions and 
+   therefore reducing the search space by allowing for search and 
+   comparison only within same pattern class type.
+   Fingerprint pattern classification can be done by visual examination of
+   shape and characteristics of regions of a fingerprint; or using classification 
+   algorithms such as neural networks or K-nearest neighbors that are trained 
+   to recognize some specified patterns.  To our knowledge, all of the current 
+   fingerprint pattern classification algorithms require some processing of 
+   fingerprint images to extract features, for example, estimate orientation flow 
+   and detect singularities.   In this paper, we present deep learning approach 
+   for automated fingerprint pattern type classification without explicit characterization  
+   of fingerprint or any feature extraction.
 \end{abstract}
 
 \section{Introduction}
@@ -73,29 +79,39 @@ First line of institution2 address\\
 %\section{Related Work}
 %\input{sec_relatedwork.tex}
 
-\section{Problem statement}
+\section{Previous work}
+\label{sec_motivtn}
 \input{sec_motivtn.tex}
 
-\section{Proposed research}
-\input{sec_plan.tex}
 
-\section{Dataset}
-\input{sec_dataset.tex}
+%\section{Proposed research}
+%\input{sec_plan.tex}
+%\label{sec_plan}
+
+%\section{Dataset}
+%\input{sec_dataset.tex}
+%\label{sec_dataset}
 
 \section{Methodology}
+\label{sec_method}
 \input{sec_method.tex}
 
+
 \section{Experiments}
+\label{sec_exp}
 \input{sec_exp.tex}
 
 
-\section{Conclusion}
+
+\section{Conclusion and Future Work}
+\label{sec_con}
 \input{sec_con.tex}
+
 
 
 {\small
 \bibliographystyle{ieee}
-\bibliography{submission_example}
+\bibliography{ijcb2017_main}
 }
 
 \end{document}
